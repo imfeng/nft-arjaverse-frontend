@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" >
 		<meta charset="UTF-8" />
 		<title>Arjaverse Game #</title>
 		<style>
@@ -11,6 +12,7 @@
 }
 
 body{
+  overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -288,6 +290,7 @@ function draw() {
 }
 
 document.addEventListener("mousemove", mouseMoveHandler);
+canvas.addEventListener("touchmove", touchMoveHandler);
 
 // get a random value between two values
 function getRandomArbitrary(min, max, toInt = false) {
@@ -298,7 +301,22 @@ function getRandomArbitrary(min, max, toInt = false) {
   return value;
 }
 
+function touchMoveHandler(e) {
+  e.preventDefault();
+  let relativeX = e.touches[0].clientX - canvas.offsetLeft;
+  if (
+    relativeX > 0 + paddleWidth / 2 &&
+    relativeX < canvas.width - paddleWidth / 2
+  ) {
+    paddleX = relativeX - paddleWidth / 2;
+  }
+
+}
+
 function mouseMoveHandler(e) {
+  console.log({
+    e
+  })
   let relativeX = e.clientX - canvas.offsetLeft;
   if (
     relativeX > 0 + paddleWidth / 2 &&

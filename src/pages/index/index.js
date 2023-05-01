@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Flex, Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Background from "../components/Background/Background";
-import WaveButton from "../components/Button/WaveButton/WaveButton";
+import Background from "../../components/Background/Background";
+import WaveButton from "../../components/Button/WaveButton/WaveButton";
 import { useAccount } from "wagmi";
-import NoSSRWrapper from "../components/NoSSRWrapper";
-import { AccountContext } from "../components/Provider";
+import NoSSRWrapper from "../../components/NoSSRWrapper";
 //TODO: add animation
 
 export default function Main() {
-  const { ifAddressHasNFT } = useContext(AccountContext);
   const { address } = useAccount();
   const router = useRouter();
   const goPage = (page) => {
@@ -58,23 +56,19 @@ export default function Main() {
             justifyContent="center"
             width="100%"
             marginTop={{ base: "5px", sm: "30px" }}
-            marginBottom={{ base: "20px", sm: "-100px", md: "-100px" }}
+            marginBottom={{ base: "20px", sm: "100px", md: "0" }}
           >
             <Box
               gap="4"
               width={{ base: "80%", sm: "80%" }}
               display={{ base: "flex", sm: "80px" }}
-              alignItems={"center"}
-              flexDirection={{ base: "column", sm: "column", md: "row" }}
+              alignItems={'center'}
+              flexDirection={{ base: "column", sm: "column" , md: "row" }}
               justifyContent="center"
               zIndex={20}
             >
+              <WaveButton fun={() => goPage("/profile")}>My NFT</WaveButton>
               <WaveButton fun={() => goPage("/mint")}>Go To Mint</WaveButton>
-              {ifAddressHasNFT ? (
-                <WaveButton fun={() => goPage("/profile")}>My NFT</WaveButton>
-              ) : (
-                <></>
-              )}
               <WaveButton fun={() => goPage("/show")}>Show Room</WaveButton>
             </Box>
           </Box>

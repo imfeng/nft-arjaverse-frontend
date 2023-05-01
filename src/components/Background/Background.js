@@ -1,7 +1,7 @@
 import React from "react";
 // 背景
 import Wave from "./Wave.js";
-import { Flex, Image ,Box } from "@chakra-ui/react";
+import { Flex, Image, Box } from "@chakra-ui/react";
 // import arja from "../../assets/svg/arja.png";
 import arja from "../../assets/arja.png";
 // import arja from "../../assets/svg/arja.png";
@@ -113,20 +113,20 @@ export default function Background(props) {
           transform={{ base: "translateX(10%)", sm: "translateX(10%)", md: "translateX(10%)" }}
         /> */}
         <Box
-          width={{base: "400px", sm: "80%", md: "auto"}}
-          height={{base: "400px", sm: "400px", md: "auto"}}
-          marginBottom={{ base: "-320px", sm: "-35%", md: "-550px" }}
-          marginLeft={{ base: "300px", sm: '0' }}
-          zIndex="1"
+          width={{ base: "400px", sm: "90%", md: "40%" }}
+          height={{ base: "400px", sm: "auto", md: "auto" }}
+          marginTop={{ base: "10px", sm: "20px", md: "0px" }}
+          marginBottom={{ base: "-250px", sm: "-350px", md: "-330px" }}
+          zIndex={"0"}
         >
           <Image
-            width={{ base: "400px", sm: "100%", md: "auto" }}
+            width={{ base: "400px", sm: "100%", md: "100%" }}
             src={arja.src}
             alt="Dan Abramov"
           />
         </Box>
         {/* 海浪 */}
-        <Wave className="z-20"/>
+        <Wave className="z-20" />
         <div className="wave-bot z-20"></div>
       </Flex>
     </>

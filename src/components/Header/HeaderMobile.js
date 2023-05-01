@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import Image from 'next/dist/client/image';
 import {
   Center,
   Flex,
@@ -30,7 +29,7 @@ export default function Mobile(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hover, setHover] = useState(false);
 
-  const { goPage } = props;
+  const { goPage, ifAddressHasNFT } = props;
 
   return (
     <>
@@ -55,9 +54,9 @@ export default function Mobile(props) {
             {address ? (
               <div className="flex justify-around text-darkBlue text-lg h-16 items-center">
                 <ConnectButton.Custom>
-                  {({ chain, openAccountModal, openChainModal }) => {
+                  {({ openAccountModal, openChainModal }) => {
                     return (
-                      <>
+                      <Flex>
                         <Box
                           as="button"
                           bg="white"
@@ -83,6 +82,8 @@ export default function Mobile(props) {
                           justifyContent="center"
                           gap="3"
                           alignItems="center"
+                          marginLeft={"16px"}
+                          rounded={"2xl"}
                           _hover={{ bg: "white" }}
                           className="shadow-xl bg-white rounded-2xl p-2"
                           onClick={() => openAccountModal()}
@@ -94,7 +95,7 @@ export default function Mobile(props) {
                               address.slice(38, 42)}
                           <ChevronDownIcon />
                         </Box>
-                      </>
+                      </Flex>
                     );
                   }}
                 </ConnectButton.Custom>
@@ -129,6 +130,9 @@ export default function Mobile(props) {
                   <Button
                     width={"100%"}
                     bgColor="#B5E0E9"
+                    disabled={!ifAddressHasNFT}
+                    opacity={ifAddressHasNFT ? "1" : "0.5"}
+                    cursor={ifAddressHasNFT ? "pointer" : "not-allowed"}
                     color="cyan.800"
                     className="drop-shadow-xl"
                     onClick={() => {
@@ -160,15 +164,13 @@ export default function Mobile(props) {
                     color="cyan.800"
                     className="drop-shadow-xl"
                     onClick={() => {
-                      window.open("https://testnets.opensea.io/collection/arjaverse-nft", "_blank");
+                      window.open("https://opensea.io/zh-TW/collection/arjaverse-nft", "_blank");
                       onClose();
                     }}
                   >
                     Opensea
                   </Button>
                 </Center>
-
-                
               </div>
             ) : (
               <></>

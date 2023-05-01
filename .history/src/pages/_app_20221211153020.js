@@ -6,13 +6,14 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import Header from "../components/Header/Header";
 import Head from "next/head";
 import Logo from "../../src/assets/images/logo.ico";
-import { Provider } from "../components/Provider";
 
 const emotionCache = createCache({
   key: "style",
@@ -34,7 +35,7 @@ const theme = extendTheme({
 });
 
 const { chains, provider } = configureChains(
-  [chain.mainnet],
+  [chain.mainnet, chain.goerli],
   [
     alchemyProvider({ apiKey: "5Rbut6tuZaLXz2YsqwJ7Uj3TKtAVkinZ" }),
     // publicProvider(),
@@ -58,30 +59,24 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Arjaverse!</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href={`https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&display=swap`}
+          href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link rel="icon" href={Logo.src} />
       </Head>
       <WagmiConfig client={wagmiClient}>
-        <CacheProvider value={emotionCache}>
-          <RainbowKitProvider chains={chains}>
+        <RainbowKitProvider chains={chains}>
+          <CacheProvider value={emotionCache}>
             <ChakraProvider theme={theme}>
-              <Provider>
-                <Header />
-                <div className="pt-20">
-                  <Component {...pageProps} />
-                </div>
-              </Provider>
+              <Header />
+              <div className="pt-20">
+                <Component {...pageProps} />
+              </div>
             </ChakraProvider>
-          </RainbowKitProvider>
-        </CacheProvider>
+          </CacheProvider>
+        </RainbowKitProvider>
       </WagmiConfig>
     </>
   );

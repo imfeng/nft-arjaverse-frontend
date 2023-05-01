@@ -126,8 +126,13 @@ export default function Background(props) {
           />
         </Box>
         {/* 海浪 */}
-        <Wave className="z-20" />
-        <div className="wave-bot z-20"></div>
+        <div className="wave-box">
+          <div className="wave-top z-20">
+            <Wave className="z-20" />
+          </div>
+          <div className="wave-bot z-20"></div>
+
+        </div>
       </Flex>
     </>
   );

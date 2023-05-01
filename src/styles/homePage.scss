@@ -30,7 +30,7 @@ body {
   position: relative;
   width: 120%;
   height: 80px;
-  margin-bottom: -7px; /*Fix for safari gap*/
+  // margin-bottom: -7px; /*Fix for safari gap*/
   min-height: 80px;
   max-height: 80px;
 }
@@ -39,7 +39,7 @@ body {
   width: 100%;
   height: 500px;
   background: rgb(87, 136, 160, .9);
-  margin-top: 7px;
+  // margin-top: 7px;
   z-index: 20;
 }
 
@@ -138,3 +138,13 @@ body {
 }
 
 
+.wave-box {
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wave-top {
+  overflow: hidden;
+}

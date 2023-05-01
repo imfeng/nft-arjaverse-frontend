@@ -22,7 +22,7 @@ export default function Wave() {
             xlinkHref="#gentle-wave"
             x="48"
             y="0"
-            fill="rgba(87,136,160,0.7"
+            fill="rgba(87,136,160,0.7)"
           />
           <use
             xlinkHref="#gentle-wave"

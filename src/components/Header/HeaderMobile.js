@@ -110,71 +110,74 @@ export default function Mobile(props) {
           </DrawerHeader>
           <Divider className="mb-2" bg="transparent" />
           <DrawerBody bg={"linear-gradient(#B5E0E9, #CEE2D6 80%)"} mt="1">
-            {address ? (
-              <div className="w-full">
-                <Center h={"50px"}>
-                  <Button
-                    width={"100%"}
-                    bgColor="#B5E0E9"
-                    color="cyan.800"
-                    onClick={() => {
-                      goPage("/mint");
-                      onClose();
-                    }}
-                    className="drop-shadow-xl"
-                  >
-                    Go To Mint
-                  </Button>
-                </Center>
-                <Center h={"50px"}>
-                  <Button
-                    width={"100%"}
-                    bgColor="#B5E0E9"
-                    disabled={!ifAddressHasNFT}
-                    opacity={ifAddressHasNFT ? "1" : "0.5"}
-                    cursor={ifAddressHasNFT ? "pointer" : "not-allowed"}
-                    color="cyan.800"
-                    className="drop-shadow-xl"
-                    onClick={() => {
-                      goPage("/profile");
-                      onClose();
-                    }}
-                  >
-                    My NFTs
-                  </Button>
-                </Center>
-                <Center h={"50px"}>
-                  <Button
-                    width={"100%"}
-                    bgColor="#B5E0E9"
-                    color="cyan.800"
-                    className="drop-shadow-xl"
-                    onClick={() => {
-                      goPage("/show");
-                      onClose();
-                    }}
-                  >
-                    ShowRoom
-                  </Button>
-                </Center>
-                <Center h={"50px"}>
-                  <Button
-                    width={"100%"}
-                    bgColor="#B5E0E9"
-                    color="cyan.800"
-                    className="drop-shadow-xl"
-                    onClick={() => {
-                      window.open("https://opensea.io/zh-TW/collection/arjaverse-nft", "_blank");
-                      onClose();
-                    }}
-                  >
-                    Opensea
-                  </Button>
-                </Center>
-              </div>
-            ) : (
-              <></>
-            )}
+            <div className="w-full">
+              {
+                address ?
+                (<>
+                  <Center h={"50px"}>
+                    <Button
+                      width={"100%"}
+                      bgColor="#B5E0E9"
+                      color="cyan.800"
+                      onClick={() => {
+                        goPage("/mint");
+                        onClose();
+                      }}
+                      className="drop-shadow-xl"
+                    >
+                      Go To Mint
+                    </Button>
+                  </Center>
+                  <Center h={"50px"}>
+                    <Button
+                      width={"100%"}
+                      bgColor="#B5E0E9"
+                      disabled={!ifAddressHasNFT}
+                      opacity={ifAddressHasNFT ? "1" : "0.5"}
+                      cursor={ifAddressHasNFT ? "pointer" : "not-allowed"}
+                      color="cyan.800"
+                      className="drop-shadow-xl"
+                      onClick={() => {
+                        goPage("/profile");
+                        onClose();
+                      }}
+                    >
+                      My NFTs
+                    </Button>
+                  </Center>
+                </>)
+                :
+                <></>
+              }
+              <Center h={"50px"}>
+                <Button
+                  width={"100%"}
+                  bgColor="#B5E0E9"
+                  color="cyan.800"
+                  className="drop-shadow-xl"
+                  onClick={() => {
+                    goPage("/show");
+                    onClose();
+                  }}
+                >
+                  ShowRoom
+                </Button>
+              </Center>
+              <Center h={"50px"}>
+                <Button
+                  width={"100%"}
+                  bgColor="#B5E0E9"
+                  color="cyan.800"
+                  className="drop-shadow-xl"
+                  onClick={() => {
+                    window.open("https://opensea.io/zh-TW/collection/arjaverse-nft", "_blank");
+                    onClose();
+                  }}
+                >
+                  Opensea
+                </Button>
+              </Center>
+            </div>
           </DrawerBody>
           <DrawerFooter
             bg="#CEE2D6"
